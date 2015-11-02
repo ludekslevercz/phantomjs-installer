@@ -29,6 +29,10 @@ class Installer
      */
     public static function installPhantomJS(Event $event)
     {
+        if (isset($_SERVER['NETTE_ENV']) && $_SERVER['NETTE_ENV'] == 'docker') {
+            return;
+        }
+        
         $composer = $event->getComposer();
 
         $version = self::getVersion($composer);
