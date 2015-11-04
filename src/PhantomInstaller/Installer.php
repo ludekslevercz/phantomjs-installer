@@ -36,6 +36,10 @@ class Installer
         $composer = $event->getComposer();
 
         $version = self::getVersion($composer);
+        
+        if ($version == 'dev-docker') {
+            $version = '1.9.8';
+        }
 
         $url = self::getURL($version);
 
